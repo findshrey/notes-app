@@ -42,7 +42,8 @@ module.exports = (env, options) => {
       ],
       devServer: {
          contentBase: path.resolve(__dirname, 'public'),
-         publicPath: '/scripts/'
+         publicPath: '/scripts/',
+         historyApiFallback: true
       },
       devtool: isProduction ? 'source-map' : 'cheap-module-eval-source-map'
    }

@@ -1,1 +1,53 @@
 // Global Styles
+*, *::before, *::after {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+
+   text-rendering: optimizeLegibility;
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+   font-kerning: auto;
+}
+
+html {
+   font-size: 62.5%;
+   scroll-behavior: smooth;
+}
+
+body {
+   // background: $c-white;
+   // color: $c-gray;
+   // font-family: $font-primary;
+   line-height: 1.5;
+}
+
+// h1 {
+//    font-size: $h1;
+// }
+// h2 {
+//    font-size: $h2;
+// }
+// h3 {
+//    // font-size: $h3;
+// }
+
+div, span, h4, p, a, li, button, label, input {
+   // font-size: $font-s;
+   // font-weight: 600;
+}
+
+ul {
+   list-style: none;
+}
+
+a {
+   // color: $c-black;
+   text-decoration: none;
+}
+
+button {
+   cursor: pointer;
+   font-family: inherit;
+   outline: none;
+}
