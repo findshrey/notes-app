@@ -1,5 +1,6 @@
 import React from 'react'
 import { useLocation, useHistory } from 'react-router-dom'
+import { getTime, format } from 'date-fns'
 
 const EditNote = ({ notes, setNotes }) => {
    const location = useLocation()
@@ -10,13 +11,20 @@ const EditNote = ({ notes, setNotes }) => {
 
    // Edit note
    const handleNoteEdit = (type, e) => {
+      const timestamp = getTime(new Date())
       // Copy notes array
       let notesCopy = [...notes]
 
       // Edit note and update
-      notesCopy[noteIndex] = { ...notesCopy[noteIndex], [type]: e.target.value }
+      notesCopy[noteIndex] = {
+         ...notesCopy[noteIndex],
+         [type]: e.target.value,
+         modified: timestamp
+      }
       setNotes(notesCopy)
    }
+
+   // console.log(format(notes[noteIndex].created, 'MM/dd/yyyy'));
 
    return (
       <section className="edit-note">
