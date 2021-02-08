@@ -63,7 +63,7 @@ const NoteList = ({ notes, setNotes }) => {
             title: '',
             body: '',
             created: timestamp,
-            modified: timestamp
+            edited: timestamp
          }
       ])
    }
@@ -79,9 +79,13 @@ const NoteList = ({ notes, setNotes }) => {
       setNotes(updatedNotes)
    }
 
-   const handleSort = (e) => {
-      setSortBy(e.target.value)
-   }
+   // const handleSort = (e) => {
+   //    setSortBy(e.target.value)
+   // }
+
+   // const handleFilter = (e) => {
+   //    setFilterBy(e.target.value)
+   // }
 
    const sortedNotes = sortNotes(notes, sortBy)
    const filteredNotes = filterBy.trim() ?
@@ -91,15 +95,14 @@ const NoteList = ({ notes, setNotes }) => {
    return (
       <section className="note-list">
          <div className="container">
-            <input value={filterBy} type="text" onChange={(e) => setFilterBy(e.target.value)} />
-            <Actions sortBy={sortBy} handleSort={handleSort} />
+            <Actions sortBy={sortBy} setSortBy={setSortBy} filterBy={filterBy} setFilterBy={setFilterBy} />
             {
                filteredNotes.map((note) => (
                   <div key={note.id} className="note">
                      <h4>
                         {note.title ? note.title : 'Unnamed Note'}
                      </h4>
-                     <p>Last Modified: {formatDistanceToNow(note.modified, { addSuffix: true })}</p>
+                     <p>Last Edited: {formatDistanceToNow(note.edited, { addSuffix: true })}</p>
                      <button onClick={() => handleNavigation(note.id)}>
                         Edit
                      </button>

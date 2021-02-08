@@ -1,12 +1,13 @@
 import React from 'react'
 
-const Actions = ({ sortBy, handleSort }) => {
+const Actions = ({ sortBy, setSortBy, filterBy, setFilterBy }) => {
    return (
       <div className="actions">
-         <select value={sortBy} name="" id="" onChange={(e) => handleSort(e)}>
+         <input value={filterBy} type="text" onChange={(e) => setFilterBy(e.target.value)} />
+         <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
             <option value="title">Sort by Title</option>
             <option value="created">Sort by recently Created</option>
-            <option value="modified">Sort by last Modified</option>
+            <option value="edited">Sort by last Edited</option>
          </select>
       </div>
    )

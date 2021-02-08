@@ -19,12 +19,10 @@ const EditNote = ({ notes, setNotes }) => {
       notesCopy[noteIndex] = {
          ...notesCopy[noteIndex],
          [type]: e.target.value,
-         modified: timestamp
+         edited: timestamp
       }
       setNotes(notesCopy)
    }
-
-   // console.log(format(notes[noteIndex].created, 'MM/dd/yyyy'));
 
    return (
       <section className="edit-note">
