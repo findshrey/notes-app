@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
-import Header from './Header'
 import Notes from './Notes'
 import EditNote from './EditNote'
 import NotFound from './NotFound'
@@ -11,7 +10,12 @@ const NotesApp = () => {
 
    return (
       <>
-         <Header />
+         <header>
+            <div className="container">
+               <h1>Notes App</h1>
+               <p>Take notes and never forget</p>
+            </div>
+         </header>
          <BrowserRouter>
             <Switch>
                <Route path="/" exact>

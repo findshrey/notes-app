@@ -1,39 +1,55 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { nanoid } from 'nanoid'
 
 const Notes = ({ notes, setNotes }) => {
-   const noteId = nanoid(10)
+   const generatedId = nanoid(10)
+   let history = useHistory()
 
-   const handleAddNote = () => {
-      // console.log('handled!');
+   // Add new note
+   const handleAddNote = (id) => {
       setNotes([
          ...notes,
          {
-            id: noteId,
+            id: id,
             title: '',
             body: ''
          }
       ])
    }
 
+   // Navigate to edit page
+   const handleNavigation = (id) => {
+      history.push(`/edit/${id}`)
+   }
+
+   // Delete note
+   const handleDeleteNote = (id) => {
+      const updatedNotes = notes.filter((note) => note.id !== id)
+      setNotes(updatedNotes)
+   }
+
    return (
       <section className="notes">
          <div className="container">
-            <div>
-               {
-                  notes.map((note) => {
-                     return (
-                        <p>
-                           <Link to={`/edit/${note.id}`}>
-                              {note.title ? note.title : 'Unnamed Note'}
-                           </Link>
-                        </p>
-                     )
-                  })
-               }
-            </div>
-            <Link to={`/edit/${noteId}`} onClick={handleAddNote}>Create Note</Link>
+            {
+               notes.map((note) => (
+                  <div key={note.id} className="note">
+                     <h4>
+                        {note.title ? note.title : 'Unnamed Note'}
+                     </h4>
+                     <button onClick={() => handleNavigation(note.id)}>
+                        Edit
+                     </button>
+                     <button onClick={() => handleDeleteNote(note.id)}>
+                        Delete
+                     </button>
+                  </div>
+               ))
+            }
+            <button onClick={() => { handleAddNote(generatedId); handleNavigation(generatedId) }}>
+               Create Note
+            </button>
          </div>
       </section>
    )

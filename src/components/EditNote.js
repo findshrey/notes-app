@@ -1,28 +1,39 @@
 import React from 'react'
-import { useLocation, Link } from 'react-router-dom'
+import { useLocation, useHistory } from 'react-router-dom'
 
 const EditNote = ({ notes, setNotes }) => {
    const location = useLocation()
+   let history = useHistory()
 
    const noteId = location.pathname.substring(location.pathname.length - 10)
    const noteIndex = notes.findIndex((note) => note.id === noteId)
 
+   // Edit note
    const handleNoteEdit = (type, e) => {
-      let newStateArr = [...notes]
+      // Copy notes array
+      let notesCopy = [...notes]
 
-      newStateArr[noteIndex] = { ...newStateArr[noteIndex], [type]: e.target.value }
-
-      setNotes(newStateArr)
+      // Edit note and update
+      notesCopy[noteIndex] = { ...notesCopy[noteIndex], [type]: e.target.value }
+      setNotes(notesCopy)
    }
 
    return (
-      <div>
+      <section className="edit-note">
          <div className="container">
-            <Link to="/">Home</Link>
-            <input value={notes[noteIndex].title} onChange={(e) => handleNoteEdit('title', e)} type="text" />
-            <textarea value={notes[noteIndex].body} onChange={(e) => handleNoteEdit('body', e)} name="" id="" cols="30" rows="10"></textarea>
+            <button onClick={() => history.push('/')}>Home</button>
+            <input
+               type="text"
+               value={notes[noteIndex].title}
+               onChange={(e) => handleNoteEdit('title', e)} />
+            <textarea
+               value={notes[noteIndex].body}
+               onChange={(e) => handleNoteEdit('body', e)}
+               cols="30"
+               rows="10"
+            />
          </div>
-      </div>
+      </section>
    )
 }
 
