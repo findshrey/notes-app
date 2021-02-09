@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useLocation, useHistory } from 'react-router-dom'
 import { getTime } from 'date-fns'
 

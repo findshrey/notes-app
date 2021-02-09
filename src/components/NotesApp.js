@@ -11,12 +11,13 @@ const NotesApp = () => {
 
    // Read existing notes from localStorage
    useEffect(() => {
-      const notesJSON = localStorage.getItem('notes')
-
       try {
-         notesJSON ? setNotes(JSON.parse(notesJSON)) : setNotes([])
+         const notesJSON = localStorage.getItem('notes')
+         if (notesJSON) {
+            setNotes(JSON.parse(notesJSON))
+         }
       } catch (e) {
-         console.log(e)
+         console.error(e)
       }
    }, [])
 
