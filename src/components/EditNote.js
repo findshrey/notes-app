@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useLocation, useHistory } from 'react-router-dom'
-import { getTime, format } from 'date-fns'
+import { getTime } from 'date-fns'
 
 const EditNote = ({ notes, setNotes }) => {
    const location = useLocation()
@@ -16,11 +16,7 @@ const EditNote = ({ notes, setNotes }) => {
       let notesCopy = [...notes]
 
       // Edit note and update
-      notesCopy[noteIndex] = {
-         ...notesCopy[noteIndex],
-         [type]: e.target.value,
-         edited: timestamp
-      }
+      notesCopy[noteIndex] = { ...notesCopy[noteIndex], [type]: e.target.value, edited: timestamp }
       setNotes(notesCopy)
    }
 
@@ -30,12 +26,12 @@ const EditNote = ({ notes, setNotes }) => {
             <button onClick={() => history.push('/')}>Home</button>
             <input
                type="text"
-               value={notes[noteIndex].title}
-               onChange={(e) => handleNoteEdit('title', e)} />
+               value={notes?.[noteIndex]?.title || ''}
+               onChange={(e) => handleNoteEdit('title', e)}
+            />
             <textarea
-               value={notes[noteIndex].body}
+               value={notes?.[noteIndex]?.body || ''}
                onChange={(e) => handleNoteEdit('body', e)}
-               cols="30"
                rows="10"
             />
          </div>

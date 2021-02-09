@@ -20,7 +20,7 @@ const NotesApp = () => {
       }
    }, [])
 
-   // Save the notes to localStorage
+   // Save notes to localStorage
    useEffect(() => {
       if (!firstUpdate.current) {
          firstUpdate.current = true
@@ -32,7 +32,7 @@ const NotesApp = () => {
 
    return (
       <>
-         <header>
+         <header className="main-head">
             <div className="container">
                <h1>Notes App</h1>
                <p>Take notes and never forget</p>

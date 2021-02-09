@@ -3,7 +3,7 @@ import React from 'react'
 const Actions = ({ sortBy, setSortBy, filterBy, setFilterBy }) => {
    return (
       <div className="actions">
-         <input value={filterBy} type="text" onChange={(e) => setFilterBy(e.target.value)} />
+         <input type="text" value={filterBy} onChange={(e) => setFilterBy(e.target.value)} />
          <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
             <option value="title">Sort by Title</option>
             <option value="created">Sort by recently Created</option>

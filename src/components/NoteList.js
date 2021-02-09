@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { nanoid } from 'nanoid'
-import { getTime, formatDistanceToNow } from 'date-fns'
+import { getTime } from 'date-fns'
 
 import Actions from './Actions'
+import Note from './Note'
 
+// Sort notes by one of the 3 selected ways
 const sortNotes = (notes, sortBy) => {
    if (!notes.length) {
       return []
@@ -13,7 +15,7 @@ const sortNotes = (notes, sortBy) => {
    let sortedNotes
 
    if (sortBy === 'title') {
-      sortedNotes = notes.sort((a, b) => {
+      return sortedNotes = notes.sort((a, b) => {
          if (a.title.toLowerCase() < b.title.toLowerCase()) {
             return -1
          } else if (a.title.toLowerCase() > b.title.toLowerCase()) {
@@ -23,7 +25,7 @@ const sortNotes = (notes, sortBy) => {
          }
       })
    } else {
-      sortedNotes = notes.sort((a, b) => {
+      return sortedNotes = notes.sort((a, b) => {
          if (a[sortBy] > b[sortBy]) {
             return -1
          } else if (a[sortBy] < b[sortBy]) {
@@ -33,10 +35,9 @@ const sortNotes = (notes, sortBy) => {
          }
       })
    }
-
-   return sortedNotes
 }
 
+// Filter notes by title
 const filterNotes = (notes, filterBy) => {
    if (!notes.length) {
       return []
@@ -49,10 +50,10 @@ const NoteList = ({ notes, setNotes }) => {
    const [sortBy, setSortBy] = useState('title')
    const [filterBy, setFilterBy] = useState('')
 
-   const generatedId = nanoid(10)
    let history = useHistory()
+   const generatedId = nanoid(10)
 
-   // Add new note
+   // Add a new note
    const handleAddNote = (id) => {
       const timestamp = getTime(new Date())
 
@@ -68,25 +69,18 @@ const NoteList = ({ notes, setNotes }) => {
       ])
    }
 
-   // Navigate to edit page
-   const handleNavigation = (id) => {
-      history.push(`/edit/${id}`)
-   }
-
-   // Delete note
+   // Delete a note
    const handleDeleteNote = (id) => {
       const updatedNotes = notes.filter((note) => note.id !== id)
       setNotes(updatedNotes)
    }
 
-   // const handleSort = (e) => {
-   //    setSortBy(e.target.value)
-   // }
+   // Navigate to edit page
+   const handleNavigation = (id) => {
+      history.push(`/edit/${id}`)
+   }
 
-   // const handleFilter = (e) => {
-   //    setFilterBy(e.target.value)
-   // }
-
+   // Notes to render
    const sortedNotes = sortNotes(notes, sortBy)
    const filteredNotes = filterBy.trim() ?
       filterNotes(sortedNotes, filterBy) :
@@ -98,18 +92,12 @@ const NoteList = ({ notes, setNotes }) => {
             <Actions sortBy={sortBy} setSortBy={setSortBy} filterBy={filterBy} setFilterBy={setFilterBy} />
             {
                filteredNotes.map((note) => (
-                  <div key={note.id} className="note">
-                     <h4>
-                        {note.title ? note.title : 'Unnamed Note'}
-                     </h4>
-                     <p>Last Edited: {formatDistanceToNow(note.edited, { addSuffix: true })}</p>
-                     <button onClick={() => handleNavigation(note.id)}>
-                        Edit
-                     </button>
-                     <button onClick={() => handleDeleteNote(note.id)}>
-                        Delete
-                     </button>
-                  </div>
+                  <Note
+                     key={note.id}
+                     note={note}
+                     handleNavigation={handleNavigation}
+                     handleDeleteNote={handleDeleteNote}
+                  />
                ))
             }
             <button onClick={() => { handleAddNote(generatedId); handleNavigation(generatedId) }}>
