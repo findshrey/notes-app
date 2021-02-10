@@ -16,15 +16,16 @@ html {
 }
 
 body {
-   // background: $c-white;
-   // color: $c-gray;
-   // font-family: $font-primary;
+   background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+   color: $c-white;
+   font-family: $font-primary;
    line-height: 1.5;
+   min-height: 100vh;
 }
 
-// h1 {
-//    font-size: $h1;
-// }
+h1 {
+   font-size: $h1;
+}
 // h2 {
 //    font-size: $h2;
 // }
@@ -33,7 +34,7 @@ body {
 // }
 
 div, span, h4, p, a, li, button, label, input {
-   // font-size: $font-s;
+   font-size: $font-m;
    // font-weight: 600;
 }
 
@@ -48,6 +49,7 @@ a {
 
 button {
    cursor: pointer;
+   color: inherit;
    font-family: inherit;
    outline: none;
 }

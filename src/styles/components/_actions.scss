@@ -1,0 +1,78 @@
+.actions {
+   display: flex;
+   padding: 2rem 0;
+}
+
+.input-wrapper {
+   flex: 1;
+   margin-right: 1rem;
+
+   input {
+      border-radius: 2px;
+      padding: 0.8rem;
+      width: 100%;
+
+      &:focus {
+         outline: none;
+      }
+   }
+}
+
+.select-wrapper {
+   border-radius: 2px;
+   position: relative;
+   overflow: hidden;
+   
+   select {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      cursor: pointer;
+      height: 100%;
+      padding: 0.8rem;
+      padding-right: 4.5rem;
+
+      &:focus {
+         outline: none;
+      }
+   }
+
+   &::after {
+      content: '\25BC';
+      background-color: #ff6f47;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 0.8rem;
+      pointer-events: none;
+   }
+}
+
+.actions {
+   input,
+   select {
+      border: none;
+      color: $c-black-matte;
+      font-family: inherit;
+      font-size: $font-s;
+      font-weight: inherit;
+      line-height: inherit;
+   }
+}
+
+@media (max-width: 500px) {
+   .actions {
+      flex-direction: column;
+   }
+
+   .input-wrapper {
+      margin: 0 0 1rem 0;
+   }
+
+   .select-wrapper {
+      select {
+         width: 100%;
+      }
+   }
+}

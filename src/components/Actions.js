@@ -3,12 +3,21 @@ import React from 'react'
 const Actions = ({ sortBy, setSortBy, filterBy, setFilterBy }) => {
    return (
       <div className="actions">
-         <input type="text" value={filterBy} onChange={(e) => setFilterBy(e.target.value)} />
-         <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
-            <option value="title">Sort by Title</option>
-            <option value="created">Sort by recently Created</option>
-            <option value="edited">Sort by last Edited</option>
-         </select>
+         <div className="input-wrapper">
+            <input
+               type="text"
+               placeholder="Filter Notes"
+               value={filterBy}
+               onChange={(e) => setFilterBy(e.target.value)}
+            />
+         </div>
+         <div className="select-wrapper">
+            <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+               <option value="title">Sort by Title</option>
+               <option value="created">Sort by recently Created</option>
+               <option value="edited">Sort by last Edited</option>
+            </select>
+         </div>
       </div>
    )
 }

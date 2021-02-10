@@ -90,16 +90,18 @@ const NoteList = ({ notes, setNotes }) => {
       <section className="note-list">
          <div className="container">
             <Actions sortBy={sortBy} setSortBy={setSortBy} filterBy={filterBy} setFilterBy={setFilterBy} />
-            {
-               filteredNotes.map((note) => (
-                  <Note
-                     key={note.id}
-                     note={note}
-                     handleNavigation={handleNavigation}
-                     handleDeleteNote={handleDeleteNote}
-                  />
-               ))
-            }
+            <div className="notes-wrapper">
+               {
+                  filteredNotes.map((note) => (
+                     <Note
+                        key={note.id}
+                        note={note}
+                        handleNavigation={handleNavigation}
+                        handleDeleteNote={handleDeleteNote}
+                     />
+                  ))
+               }
+            </div>
             <button onClick={() => { handleAddNote(generatedId); handleNavigation(generatedId) }}>
                Create Note
             </button>
