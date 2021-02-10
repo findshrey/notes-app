@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom'
 import { nanoid } from 'nanoid'
 import { getTime } from 'date-fns'
 
+import IconPlus from './icons/IconPlus'
 import Actions from './Actions'
 import Note from './Note'
 
@@ -70,9 +71,17 @@ const NoteList = ({ notes, setNotes }) => {
    }
 
    // Delete a note
-   const handleDeleteNote = (id) => {
-      const updatedNotes = notes.filter((note) => note.id !== id)
-      setNotes(updatedNotes)
+   const handleDeleteNote = (e, id) => {
+      // Find note and add class
+      const element = e.target
+      const note = element.closest('#js-note')
+      note.classList.add('fall')
+
+      // Wait for transition to complete and delete note
+      setTimeout(() => {
+         const updatedNotes = notes.filter((note) => note.id !== id)
+         setNotes(updatedNotes)
+      }, 1000)
    }
 
    // Navigate to edit page
@@ -102,9 +111,15 @@ const NoteList = ({ notes, setNotes }) => {
                   ))
                }
             </div>
-            <button onClick={() => { handleAddNote(generatedId); handleNavigation(generatedId) }}>
-               Create Note
-            </button>
+            <div className="btn-wrapper">
+               <button
+                  className="primary-btn"
+                  onClick={() => { handleAddNote(generatedId); handleNavigation(generatedId) }}
+               >
+                  <span>Create Note</span>
+                  <IconPlus />
+               </button>
+            </div>
          </div>
       </section>
    )

@@ -1,6 +1,6 @@
 .actions {
    display: flex;
-   padding: 2rem 0;
+   margin-top: 2rem;
 }
 
 .input-wrapper {
@@ -9,7 +9,7 @@
 
    input {
       border-radius: 2px;
-      padding: 0.8rem;
+      padding: 1rem;
       width: 100%;
 
       &:focus {
@@ -29,7 +29,7 @@
       appearance: none;
       cursor: pointer;
       height: 100%;
-      padding: 0.8rem;
+      padding: 1rem;
       padding-right: 4.5rem;
 
       &:focus {
@@ -38,13 +38,13 @@
    }
 
    &::after {
-      content: '\25BC';
+      content: '\26DB';
       background-color: #ff6f47;
       cursor: pointer;
       position: absolute;
       top: 0;
       right: 0;
-      padding: 0.8rem;
+      padding: 1rem;
       pointer-events: none;
    }
 }

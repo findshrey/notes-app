@@ -1,0 +1,57 @@
+.notes-wrapper {
+   margin-top: 5rem;
+}
+
+.note {
+   background-color: $c-white;
+   border-radius: 2px;
+   color: $c-black-matte;
+   display: flex;
+   align-items: center;
+   margin-bottom: 1rem;
+   transition: all 1s ease;
+   overflow: hidden;
+}
+
+// Fall transition/ animation
+.fall {
+   opacity: 0;
+   transform: translateY(10rem) rotateZ(20deg);
+}
+
+.note-content {
+   flex: 1;
+   padding: 1rem;
+
+   h3 {
+      font-weight: 500;
+   }
+
+   p {
+      color: darken($c-white, 50%);
+      font-size: $font-s;
+      font-style: italic;
+   }
+}
+
+.note-buttons {
+   button {
+      border: none;
+      display: block;
+      padding: 0.8rem;
+   }
+
+   .edit-btn {
+      background-color: #0bd4a2;
+   }
+
+   .delete-btn {
+      background-color: #ff6f47;
+   }
+
+   svg {
+      // display: flex;
+      fill: $c-white;
+      transform: scale(0.9);
+   }
+}

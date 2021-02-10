@@ -4,3 +4,21 @@
    max-width: 600px;
    margin: 0 auto;
 }
+
+.btn-wrapper {
+   text-align: center;
+   margin-top: 5rem;
+
+   .primary-btn {
+      background-color: #0bd4a2;
+      border: none;
+      border-radius: 2px;
+      display: inline-flex;
+      align-items: center;
+      padding: 1rem;
+
+      span {
+         margin-right: 1rem;
+      }
+   }
+}

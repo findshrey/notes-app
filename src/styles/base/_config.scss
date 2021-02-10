@@ -1,14 +1,14 @@
 // // Fonts
-$font-primary: 'Fira Sans', sans-serif; // 300, 400, 500,600, 700
+$font-primary: 'Commissioner', sans-serif; // 400, 500, 600, 700
 
 // // Header(Tag) sizes
 $h1: 3.5rem; // clamp(4.5rem, calc(3rem + 4vw), 9rem)
 // $h2: 2.5rem; // clamp(2.5rem, calc(2rem + 1vw), 4rem)
-// // $h3: clamp(1.4rem, calc(1rem + 0.75vw), 2rem);
+$h3: 2rem;//clamp(1.4rem, calc(1rem + 0.75vw), 2rem);
 
 // // Text Sizes
-// $font-l: clamp(2.2rem, calc(1.5rem + 1vw), 3rem);
-$font-m: 1.5rem;
+$font-l: 1.8rem; //clamp(2.2rem, calc(1.5rem + 1vw), 3rem)
+$font-m: 1.6rem;
 $font-s: 1.3rem;
 
 // // Colors

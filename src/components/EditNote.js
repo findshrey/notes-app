@@ -2,6 +2,8 @@ import React from 'react'
 import { useLocation, useHistory } from 'react-router-dom'
 import { getTime } from 'date-fns'
 
+import IconBack from './icons/IconBack'
+
 const EditNote = ({ notes, setNotes }) => {
    const location = useLocation()
    let history = useHistory()
@@ -23,17 +25,24 @@ const EditNote = ({ notes, setNotes }) => {
    return (
       <section className="edit-note">
          <div className="container">
-            <button onClick={() => history.push('/')}>Home</button>
             <input
                type="text"
+               placeholder="Note Title"
                value={notes?.[noteIndex]?.title || ''}
                onChange={(e) => handleNoteEdit('title', e)}
             />
             <textarea
+               placeholder="Enter note text"
                value={notes?.[noteIndex]?.body || ''}
                onChange={(e) => handleNoteEdit('body', e)}
                rows="10"
             />
+            <div className="btn-wrapper">
+               <button className="primary-btn" onClick={() => history.push('/')}>
+                  <span>Back</span>
+                  <IconBack />
+               </button>
+            </div>
          </div>
       </section>
    )
