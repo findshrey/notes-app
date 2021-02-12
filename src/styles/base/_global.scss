@@ -16,7 +16,7 @@ html {
 }
 
 body {
-   background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+   background: darken($c-white, 5%);
    color: $c-white;
    font-family: $font-primary;
    line-height: 1.5;
@@ -24,18 +24,15 @@ body {
 }
 
 h1 {
-   font-size: $h1;
+   font-size: clamp(3rem, calc(2.5rem + 1vw), 3.5rem);
+   font-weight: 600;
 }
-// h2 {
-//    font-size: $h2;
-// }
 h3 {
-   font-size: $h3;
+   font-size: clamp(1.6rem, calc(1.2rem + 1vw), 2rem);
 }
 
 div, span, h4, p, a, li, button, label, input {
    font-size: $font-m;
-   // font-weight: 600;
 }
 
 ul {
@@ -43,7 +40,7 @@ ul {
 }
 
 a {
-   // color: $c-black;
+   color: inherit;
    text-decoration: none;
 }
 

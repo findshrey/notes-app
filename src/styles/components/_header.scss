@@ -1,8 +1,13 @@
 .main-head {
-   padding: 1.5rem 0;
+   background: $c-green-dark;
+   padding: 2rem 0;
+
+   h1 {
+      line-height: 1;
+      margin-bottom: 1rem;
+   }
 
    p {
-      font-size: $font-m;
-      font-weight: 500;
+      color: darken($c-white, 3%);
    }
 }

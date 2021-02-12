@@ -1,4 +1,4 @@
-// Utility Classes and Mixins
+// Utility Classes
 .container {
    width: 90%;
    max-width: 600px;
@@ -10,12 +10,17 @@
    margin-top: 5rem;
 
    .primary-btn {
-      background-color: #0bd4a2;
+      background-color: $c-green-dark;
       border: none;
       border-radius: 2px;
       display: inline-flex;
       align-items: center;
+      transition: all 0.4s ease-in-out;
       padding: 1rem;
+
+      &:hover {
+         background-color: lighten($c-green-dark, 10%);
+      }
 
       span {
          margin-right: 1rem;

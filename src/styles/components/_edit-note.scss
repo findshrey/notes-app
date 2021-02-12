@@ -1,4 +1,6 @@
 .edit-note {
+   padding: $padding-section;
+
    input,
    textarea {
       display: block;
@@ -11,7 +13,6 @@
       line-height: inherit;
       width: 100%;
       padding: 1rem;
-      margin-top: 2rem;
 
       &:focus {
          outline: none;
@@ -20,5 +21,6 @@
 
    textarea {
       resize: none;
+      margin-top: 2rem;
    }
 }

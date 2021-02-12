@@ -1,3 +1,7 @@
+.note-list {
+   padding: $padding-section;
+}
+
 .notes-wrapper {
    margin-top: 5rem;
 }
@@ -9,7 +13,7 @@
    display: flex;
    align-items: center;
    margin-bottom: 1rem;
-   transition: all 1s ease;
+   transition: all 0.8s ease;
    overflow: hidden;
 }
 
@@ -42,11 +46,21 @@
    }
 
    .edit-btn {
-      background-color: #0bd4a2;
+      background-color: $c-green-dark;
+      transition: all 0.4s ease-in-out;
+
+      &:hover {
+         background-color: lighten($c-green-dark, 10%);
+      }
    }
 
    .delete-btn {
-      background-color: #ff6f47;
+      background-color: $c-mustard;
+      transition: all 0.4s ease-in-out;
+
+      &:hover {
+         background-color: darken($c-mustard, 10%);
+      }
    }
 
    svg {

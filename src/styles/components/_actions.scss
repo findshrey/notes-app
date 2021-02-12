@@ -1,6 +1,5 @@
 .actions {
    display: flex;
-   margin-top: 2rem;
 }
 
 .input-wrapper {
@@ -9,7 +8,7 @@
 
    input {
       border-radius: 2px;
-      padding: 1rem;
+      padding: 0.9rem;
       width: 100%;
 
       &:focus {
@@ -29,7 +28,7 @@
       appearance: none;
       cursor: pointer;
       height: 100%;
-      padding: 1rem;
+      padding: 0.9rem;
       padding-right: 4.5rem;
 
       &:focus {
@@ -38,13 +37,13 @@
    }
 
    &::after {
-      content: '\26DB';
-      background-color: #ff6f47;
+      content: '\25BC';
+      background-color: $c-mustard;
       cursor: pointer;
       position: absolute;
       top: 0;
       right: 0;
-      padding: 1rem;
+      padding: 0.9rem;
       pointer-events: none;
    }
 }
@@ -55,7 +54,7 @@
       border: none;
       color: $c-black-matte;
       font-family: inherit;
-      font-size: $font-s;
+      font-size: inherit;
       font-weight: inherit;
       line-height: inherit;
    }

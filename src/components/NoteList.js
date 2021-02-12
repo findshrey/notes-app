@@ -81,7 +81,7 @@ const NoteList = ({ notes, setNotes }) => {
       setTimeout(() => {
          const updatedNotes = notes.filter((note) => note.id !== id)
          setNotes(updatedNotes)
-      }, 1000)
+      }, 800)
    }
 
    // Navigate to edit page
