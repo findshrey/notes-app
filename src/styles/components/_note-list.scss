@@ -50,16 +50,16 @@
       transition: all 0.4s ease-in-out;
 
       &:hover {
-         background-color: lighten($c-green-dark, 10%);
+         background-color: lighten($c-green-dark, 5%);
       }
    }
 
    .delete-btn {
-      background-color: $c-mustard;
+      background-color: $c-green-leaf;
       transition: all 0.4s ease-in-out;
 
       &:hover {
-         background-color: darken($c-mustard, 10%);
+         background-color: lighten($c-green-leaf, 5%);
       }
    }
 
