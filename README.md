@@ -1,5 +1,6 @@
 # Notes App
-A simple notes app to help you keep track of things.
+A simple notes app to help you keep track of things.<br>
+Saves data in local storage. Hosted with Netlify.
 
 ![demo](src/readme_images/demo.png?raw=true)
 
@@ -23,7 +24,7 @@ A simple notes app to help you keep track of things.
    npm run dev
    ```
    
-## 🚀 Building and Running for Production
+## 🚀 Building for Production
 
 1. Generate a full static production build
 
