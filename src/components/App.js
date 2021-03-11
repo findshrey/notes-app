@@ -5,7 +5,7 @@ import NoteList from './NoteList'
 import EditNote from './EditNote'
 import NotFound from './NotFound'
 
-const NotesApp = () => {
+const App = () => {
    const [notes, setNotes] = useState([])
    const firstUpdate = useRef(false)
 
@@ -56,4 +56,4 @@ const NotesApp = () => {
    )
 }
 
-export default NotesApp
+export default App
