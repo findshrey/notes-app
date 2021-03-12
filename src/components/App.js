@@ -19,9 +19,9 @@ const App = () => {
                <Route path="/" exact>
                   <Home />
                </Route>
-               {/* <Route path="/edit/:id">
-                  <EditNote notes={notes} setNotes={setNotes} />
-               </Route> */}
+               <Route path="/edit/:id">
+                  <EditNote />
+               </Route>
                <Route>
                   <NotFound />
                </Route>
