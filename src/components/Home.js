@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useHistory } from 'react-router-dom'
 import { nanoid } from 'nanoid'
 import { getTime } from 'date-fns'
@@ -47,12 +47,37 @@ const filterNotes = (notes, filterBy) => {
    return notes.filter((note) => note.title.toLowerCase().includes(filterBy.toLowerCase()))
 }
 
-const Home = ({ notes, setNotes }) => {
+const Home = () => {
+   const [notes, setNotes] = useState([])
    const [sortBy, setSortBy] = useState('title')
    const [filterBy, setFilterBy] = useState('')
+   const firstUpdate = useRef(false)
 
    let history = useHistory()
    const generatedId = nanoid(10)
+
+   // Read existing notes from localStorage
+   useEffect(() => {
+      try {
+         const notesJSON = localStorage.getItem('notes')
+
+         if (notesJSON) {
+            setNotes(JSON.parse(notesJSON))
+         }
+      } catch (e) {
+         console.error(e)
+      }
+   }, [])
+
+   // Save notes to localStorage
+   useEffect(() => {
+      if (!firstUpdate.current) {
+         firstUpdate.current = true
+         return
+      }
+
+      localStorage.setItem('notes', JSON.stringify(notes))
+   }, [notes])
 
    // Add a new note
    const handleAddNote = (id) => {
