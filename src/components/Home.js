@@ -93,6 +93,10 @@ const Home = () => {
             edited: timestamp
          }
       ])
+
+      setTimeout(() => {
+         history.push(`/edit/${id}`)
+      }, 1)
    }
 
    // Delete a note
@@ -139,7 +143,7 @@ const Home = () => {
             <div className="btn-wrapper">
                <button
                   className="primary-btn"
-                  onClick={() => { handleAddNote(generatedId); handleNavigation(generatedId) }}
+                  onClick={() => handleAddNote(generatedId)}
                >
                   <span>Create Note</span>
                   <IconPlus />
