@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
-import NoteList from './NoteList'
+import Home from './Home'
 import EditNote from './EditNote'
 import NotFound from './NotFound'
 
@@ -42,7 +42,7 @@ const App = () => {
          <BrowserRouter>
             <Switch>
                <Route path="/" exact>
-                  <NoteList notes={notes} setNotes={setNotes} />
+                  <Home notes={notes} setNotes={setNotes} />
                </Route>
                <Route path="/edit/:id">
                   <EditNote notes={notes} setNotes={setNotes} />

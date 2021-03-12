@@ -47,7 +47,7 @@ const filterNotes = (notes, filterBy) => {
    return notes.filter((note) => note.title.toLowerCase().includes(filterBy.toLowerCase()))
 }
 
-const NoteList = ({ notes, setNotes }) => {
+const Home = ({ notes, setNotes }) => {
    const [sortBy, setSortBy] = useState('title')
    const [filterBy, setFilterBy] = useState('')
 
@@ -96,10 +96,10 @@ const NoteList = ({ notes, setNotes }) => {
       sortedNotes
 
    return (
-      <section className="note-list">
+      <section className="home">
          <div className="container">
             <Actions sortBy={sortBy} setSortBy={setSortBy} filterBy={filterBy} setFilterBy={setFilterBy} />
-            <div className="notes-wrapper">
+            <div className="note-list">
                {
                   filteredNotes.map((note) => (
                      <Note
@@ -125,4 +125,4 @@ const NoteList = ({ notes, setNotes }) => {
    )
 }
 
-export default NoteList
+export default Home
