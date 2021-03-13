@@ -13,8 +13,8 @@ const EditNote = () => {
    // Get index of current note
    const noteIndex = notes.findIndex((note) => note.id === id)
 
-   // Edit note
-   const handleNoteEdit = (type, e) => {
+   // Edit a note
+   const handleEditNote = (type, e) => {
       const timestamp = getTime(new Date())
       // Copy notes array
       let notesCopy = [...notes]
@@ -31,12 +31,12 @@ const EditNote = () => {
                type="text"
                placeholder="Note Title"
                value={notes?.[noteIndex]?.title || ''}
-               onChange={(e) => handleNoteEdit('title', e)}
+               onChange={(e) => handleEditNote('title', e)}
             />
             <textarea
                placeholder="Enter note text"
                value={notes?.[noteIndex]?.body || ''}
-               onChange={(e) => handleNoteEdit('body', e)}
+               onChange={(e) => handleEditNote('body', e)}
                rows="10"
             />
             <div className="btn-wrapper">

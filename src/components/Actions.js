@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Actions = ({ sortBy, setSortBy, filterBy, setFilterBy }) => {
+const Actions = ({ sortBy, filterBy, handleAction }) => {
    return (
       <div className="actions">
          <div className="input-wrapper">
@@ -8,11 +8,11 @@ const Actions = ({ sortBy, setSortBy, filterBy, setFilterBy }) => {
                type="text"
                placeholder="Filter Notes"
                value={filterBy}
-               onChange={(e) => setFilterBy(e.target.value)}
+               onChange={(e) => handleAction('filter', e.target.value)}
             />
          </div>
          <div className="select-wrapper">
-            <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+            <select value={sortBy} onChange={(e) => handleAction('sort', e.target.value)}>
                <option value="title">Sort by Title</option>
                <option value="created">Sort by recently Created</option>
                <option value="edited">Sort by last Edited</option>

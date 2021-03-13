@@ -1,12 +1,12 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { nanoid } from 'nanoid'
 import { getTime } from 'date-fns'
 
 import useLocalStorage from './../hooks/useLocalStorage'
-import IconPlus from './icons/IconPlus'
 import Actions from './Actions'
-import Note from './Note'
+import NoteList from './NoteList'
+import IconPlus from './icons/IconPlus'
 
 // Sort notes by one of the 3 selected ways
 const sortNotes = (notes, sortBy) => {
@@ -52,9 +52,7 @@ const Home = () => {
    const [notes, setNotes] = useLocalStorage('notes', [])
    const [sortBy, setSortBy] = useState('title')
    const [filterBy, setFilterBy] = useState('')
-
    let history = useHistory()
-   const generatedId = nanoid(10)
 
    // Add a new note
    const handleAddNote = (id) => {
@@ -95,6 +93,15 @@ const Home = () => {
       history.push(`/edit/${id}`)
    }
 
+   // Manipulate note list
+   const handleAction = (type, val) => {
+      if (type === 'sort') {
+         setSortBy(val)
+      } else if (type === 'filter') {
+         setFilterBy(val)
+      }
+   }
+
    // Notes to render
    const sortedNotes = sortNotes(notes, sortBy)
    const filteredNotes = filterBy.trim() ?
@@ -104,23 +111,20 @@ const Home = () => {
    return (
       <section className="home">
          <div className="container">
-            <Actions sortBy={sortBy} setSortBy={setSortBy} filterBy={filterBy} setFilterBy={setFilterBy} />
-            <div className="note-list">
-               {
-                  filteredNotes.map((note) => (
-                     <Note
-                        key={note.id}
-                        note={note}
-                        handleNavigation={handleNavigation}
-                        handleDeleteNote={handleDeleteNote}
-                     />
-                  ))
-               }
-            </div>
+            <Actions
+               sortBy={sortBy}
+               filterBy={filterBy}
+               handleAction={handleAction}
+            />
+            <NoteList
+               filteredNotes={filteredNotes}
+               handleNavigation={handleNavigation}
+               handleDeleteNote={handleDeleteNote}
+            />
             <div className="btn-wrapper">
                <button
                   className="primary-btn"
-                  onClick={() => handleAddNote(generatedId)}
+                  onClick={() => handleAddNote(nanoid(10))}
                >
                   <span>Create Note</span>
                   <IconPlus />
