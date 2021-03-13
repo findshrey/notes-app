@@ -1,39 +1,16 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React from 'react'
 import { useParams, useHistory } from 'react-router-dom'
 import { getTime } from 'date-fns'
 
+import useLocalStorage from './../hooks/useLocalStorage'
 import IconBack from './icons/IconBack'
 
 const EditNote = () => {
-   const [notes, setNotes] = useState([])
-   const firstUpdate = useRef(false)
-
+   const [notes, setNotes] = useLocalStorage('notes', [])
    const { id } = useParams()
    let history = useHistory()
 
-   // Read existing notes from localStorage
-   useEffect(() => {
-      try {
-         const notesJSON = localStorage.getItem('notes')
-
-         if (notesJSON) {
-            setNotes(JSON.parse(notesJSON))
-         }
-      } catch (e) {
-         console.error(e)
-      }
-   }, [])
-
-   // Save notes to localStorage
-   useEffect(() => {
-      if (!firstUpdate.current) {
-         firstUpdate.current = true
-         return
-      }
-
-      localStorage.setItem('notes', JSON.stringify(notes))
-   }, [notes])
-
+   // Get index of current note
    const noteIndex = notes.findIndex((note) => note.id === id)
 
    // Edit note

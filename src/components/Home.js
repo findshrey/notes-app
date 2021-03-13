@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom'
 import { nanoid } from 'nanoid'
 import { getTime } from 'date-fns'
 
+import useLocalStorage from './../hooks/useLocalStorage'
 import IconPlus from './icons/IconPlus'
 import Actions from './Actions'
 import Note from './Note'
@@ -48,36 +49,12 @@ const filterNotes = (notes, filterBy) => {
 }
 
 const Home = () => {
-   const [notes, setNotes] = useState([])
+   const [notes, setNotes] = useLocalStorage('notes', [])
    const [sortBy, setSortBy] = useState('title')
    const [filterBy, setFilterBy] = useState('')
-   const firstUpdate = useRef(false)
 
    let history = useHistory()
    const generatedId = nanoid(10)
-
-   // Read existing notes from localStorage
-   useEffect(() => {
-      try {
-         const notesJSON = localStorage.getItem('notes')
-
-         if (notesJSON) {
-            setNotes(JSON.parse(notesJSON))
-         }
-      } catch (e) {
-         console.error(e)
-      }
-   }, [])
-
-   // Save notes to localStorage
-   useEffect(() => {
-      if (!firstUpdate.current) {
-         firstUpdate.current = true
-         return
-      }
-
-      localStorage.setItem('notes', JSON.stringify(notes))
-   }, [notes])
 
    // Add a new note
    const handleAddNote = (id) => {
