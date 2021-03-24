@@ -1,5 +1,5 @@
 import React from 'react'
-import { useParams, useHistory } from 'react-router-dom'
+import { useParams, useHistory, Link } from 'react-router-dom'
 import { getTime } from 'date-fns'
 
 import useLocalStorage from './../hooks/useLocalStorage'
@@ -23,29 +23,39 @@ const EditNote = () => {
       notesCopy[noteIndex] = { ...notesCopy[noteIndex], [type]: e.target.value, edited: timestamp }
       setNotes(notesCopy)
    }
-
+   console.log(noteIndex);
    return (
       <section className="edit-note">
-         <div className="container">
-            <input
-               type="text"
-               placeholder="Note Title"
-               value={notes?.[noteIndex]?.title || ''}
-               onChange={(e) => handleEditNote('title', e)}
-            />
-            <textarea
-               placeholder="Enter note text"
-               value={notes?.[noteIndex]?.body || ''}
-               onChange={(e) => handleEditNote('body', e)}
-               rows="10"
-            />
-            <div className="btn-wrapper">
-               <button className="primary-btn" onClick={() => history.push('/')}>
-                  <span>Back</span>
-                  <IconBack />
-               </button>
-            </div>
-         </div>
+         {
+            noteIndex !== -1 ? (
+               <div className="container">
+                  <input
+                     type="text"
+                     placeholder="Note Title"
+                     value={notes?.[noteIndex]?.title || ''}
+                     onChange={(e) => handleEditNote('title', e)}
+                  />
+                  <textarea
+                     placeholder="Enter note text"
+                     value={notes?.[noteIndex]?.body || ''}
+                     onChange={(e) => handleEditNote('body', e)}
+                     rows="10"
+                  />
+                  <div className="btn-wrapper">
+                     <button className="primary-btn" onClick={() => history.push('/')}>
+                        <span>Back</span>
+                        <IconBack />
+                     </button>
+                  </div>
+               </div>
+            ) : (
+               <div className="not-found">
+                  <div className="container">
+                     Could not fetch the data for that note. <Link to="/">Go Home</Link>
+                  </div>
+               </div>
+            )
+         }
       </section>
    )
 }
