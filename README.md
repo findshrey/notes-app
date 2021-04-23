@@ -2,7 +2,7 @@
 
 A simple notes app to help you keep track of things. Saves data in the local storage. Hosted with [Netlify](https://www.netlify.com).
 
-![demo](src/readme_images/demo.png?raw=true)
+![demo](readme_images/demo.png?raw=true)
 
 ## Installation & Set Up
 
