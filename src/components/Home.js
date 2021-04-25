@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { nanoid } from 'nanoid'
 import { getTime } from 'date-fns'
@@ -53,6 +53,10 @@ const Home = () => {
    const [sortBy, setSortBy] = useState('title')
    const [filterBy, setFilterBy] = useState('')
    let history = useHistory()
+
+   useEffect(() => {
+      document.title = 'Notes App | Home'
+   }, [])
 
    // Add a new note
    const handleAddNote = (id) => {

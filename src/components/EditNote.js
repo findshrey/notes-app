@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useParams, useHistory, Link } from 'react-router-dom'
 import { getTime } from 'date-fns'
 
@@ -9,6 +9,10 @@ const EditNote = () => {
    const [notes, setNotes] = useLocalStorage('notes', [])
    const { id } = useParams()
    let history = useHistory()
+
+   useEffect(() => {
+      document.title = `Edit Note | ${notes[noteIndex]?.title ?? 'Unnamed Note'}`
+   }, [notes])
 
    // Get index of current note
    const noteIndex = notes.findIndex((note) => note.id === id)
@@ -23,7 +27,7 @@ const EditNote = () => {
       notesCopy[noteIndex] = { ...notesCopy[noteIndex], [type]: e.target.value, edited: timestamp }
       setNotes(notesCopy)
    }
-   console.log(noteIndex);
+
    return (
       <section className="edit-note">
          {
