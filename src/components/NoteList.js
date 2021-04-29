@@ -4,11 +4,11 @@ import { formatDistanceToNow } from 'date-fns'
 import IconPencil from './icons/IconPencil'
 import IconTrash from './icons/IconTrash'
 
-const NoteList = ({ filteredNotes, handleNavigation, handleDeleteNote }) => {
+const NoteList = ({ renderNotes, handleNavigation, handleDeleteNote }) => {
    return (
       <div className="note-list">
          {
-            filteredNotes.map((note) => (
+            renderNotes.map((note) => (
                <div key={note.id} id="js-note" className="note">
                   <div className="note-content">
                      <h3>{note.title ? note.title : 'Unnamed Note'}</h3>

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useParams, useHistory, Link } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 import { getTime } from 'date-fns'
 
 import useLocalStorage from './../hooks/useLocalStorage'

@@ -1,13 +1,13 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 
 const useLocalStorage = (key, initialValue) => {
    const [value, setValue] = useState(initialValue)
-   const firstUpdate = useRef(false)
 
    // Read existing data from localStorage
    useEffect(() => {
       try {
          const dataJSON = localStorage.getItem(key)
+         console.log(value);
 
          if (dataJSON) {
             setValue(JSON.parse(dataJSON))
@@ -19,11 +19,6 @@ const useLocalStorage = (key, initialValue) => {
 
    // Save data to localStorage
    useEffect(() => {
-      if (!firstUpdate.current) {
-         firstUpdate.current = true
-         return
-      }
-
       localStorage.setItem(key, JSON.stringify(value))
    }, [value])
 

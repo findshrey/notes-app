@@ -107,10 +107,11 @@ const Home = () => {
    }
 
    // Notes to render
-   const sortedNotes = sortNotes(notes, sortBy)
-   const filteredNotes = filterBy.trim() ?
-      filterNotes(sortedNotes, filterBy) :
-      sortedNotes
+   let renderNotes = sortNotes(notes, sortBy)
+
+   if (filterBy.trim()) {
+      renderNotes = filterNotes(renderNotes, filterBy)
+   }
 
    return (
       <section className="home">
@@ -121,7 +122,7 @@ const Home = () => {
                handleAction={handleAction}
             />
             <NoteList
-               filteredNotes={filteredNotes}
+               renderNotes={renderNotes}
                handleNavigation={handleNavigation}
                handleDeleteNote={handleDeleteNote}
             />

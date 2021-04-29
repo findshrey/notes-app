@@ -48,5 +48,8 @@ button {
    cursor: pointer;
    color: inherit;
    font-family: inherit;
-   outline: none;
+   
+   &:focus {
+      outline: none;
+   }
 }
