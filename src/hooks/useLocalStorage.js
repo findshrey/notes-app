@@ -7,7 +7,6 @@ const useLocalStorage = (key, initialValue) => {
    useEffect(() => {
       try {
          const dataJSON = localStorage.getItem(key)
-         console.log(value);
 
          if (dataJSON) {
             setValue(JSON.parse(dataJSON))

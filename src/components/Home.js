@@ -50,13 +50,26 @@ const filterNotes = (notes, filterBy) => {
 
 const Home = () => {
    const [notes, setNotes] = useLocalStorage('notes', [])
+   const [newId, setNewId] = useState('')
    const [sortBy, setSortBy] = useState('title')
    const [filterBy, setFilterBy] = useState('')
+
    let history = useHistory()
 
    useEffect(() => {
       document.title = 'Notes App | Home'
    }, [])
+
+   useEffect(() => {
+      if (newId) {
+         handleNavigation(newId)
+      }
+   }, [newId])
+
+   // Navigate to edit page
+   const handleNavigation = (id) => {
+      history.push(`/edit/${id}`)
+   }
 
    // Add a new note
    const handleAddNote = (id) => {
@@ -73,9 +86,7 @@ const Home = () => {
          }
       ])
 
-      setTimeout(() => {
-         history.push(`/edit/${id}`)
-      }, 1)
+      setNewId(id)
    }
 
    // Delete a note
@@ -92,12 +103,7 @@ const Home = () => {
       }, 800)
    }
 
-   // Navigate to edit page
-   const handleNavigation = (id) => {
-      history.push(`/edit/${id}`)
-   }
-
-   // Manipulate note list
+   // Sort or filter notes
    const handleAction = (type, val) => {
       if (type === 'sort') {
          setSortBy(val)
