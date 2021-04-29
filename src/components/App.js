@@ -14,19 +14,21 @@ const App = () => {
                <p>Take notes and never forget</p>
             </div>
          </header>
-         <BrowserRouter>
-            <Switch>
-               <Route path="/" exact>
-                  <Home />
-               </Route>
-               <Route path="/edit/:id">
-                  <EditNote />
-               </Route>
-               <Route>
-                  <NotFound />
-               </Route>
-            </Switch>
-         </BrowserRouter>
+         <main>
+            <BrowserRouter>
+               <Switch>
+                  <Route path="/" exact>
+                     <Home />
+                  </Route>
+                  <Route path="/edit/:id">
+                     <EditNote />
+                  </Route>
+                  <Route>
+                     <NotFound />
+                  </Route>
+               </Switch>
+            </BrowserRouter>
+         </main>
       </>
    )
 }

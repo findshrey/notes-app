@@ -4,6 +4,7 @@ import { getTime } from 'date-fns'
 
 import useLocalStorage from './../hooks/useLocalStorage'
 import IconBack from './icons/IconBack'
+import NotFound from './NotFound'
 
 const EditNote = () => {
    const [notes, setNotes] = useLocalStorage('notes', [])
@@ -53,11 +54,7 @@ const EditNote = () => {
                   </div>
                </div>
             ) : (
-               <div className="not-found">
-                  <div className="container">
-                     Could not fetch the data for that note. <Link to="/">Go Home</Link>
-                  </div>
-               </div>
+               <NotFound message={'Could not fetch the data for that note.'} />
             )
          }
       </section>
