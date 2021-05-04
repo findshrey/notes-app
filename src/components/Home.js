@@ -8,7 +8,7 @@ import Actions from './Actions'
 import NoteList from './NoteList'
 import IconPlus from './icons/IconPlus'
 
-// Sort notes by one of the 3 selected ways
+// Sort notes by one of 3 selected categories
 const sortNotes = (notes, sortBy) => {
    if (!notes.length) {
       return []
@@ -40,19 +40,18 @@ const sortNotes = (notes, sortBy) => {
 }
 
 // Filter notes by title
-const filterNotes = (notes, filterBy) => {
+const filterNotes = (notes, searchText) => {
    if (!notes.length) {
       return []
    }
 
-   return notes.filter((note) => note.title.toLowerCase().includes(filterBy.toLowerCase()))
+   return notes.filter((note) => note.title.toLowerCase().includes(searchText.toLowerCase()))
 }
 
 const Home = () => {
    const [notes, setNotes] = useLocalStorage('notes', [])
    const [newId, setNewId] = useState('')
-   const [sortBy, setSortBy] = useState('title')
-   const [filterBy, setFilterBy] = useState('')
+   const [filters, setFilters] = useState({ sortBy: 'title', searchText: '' })
 
    let history = useHistory()
 
@@ -103,29 +102,24 @@ const Home = () => {
       }, 800)
    }
 
-   // Sort or filter notes
-   const handleAction = (type, val) => {
-      if (type === 'sort') {
-         setSortBy(val)
-      } else if (type === 'filter') {
-         setFilterBy(val)
-      }
+   // Set filters
+   const handleFilters = (type, val) => {
+      setFilters(prevFilters => ({ ...prevFilters, [type]: val }))
    }
 
    // Notes to render
-   let renderNotes = sortNotes(notes, sortBy)
+   let renderNotes = sortNotes(notes, filters.sortBy)
 
-   if (filterBy.trim()) {
-      renderNotes = filterNotes(renderNotes, filterBy)
+   if (filters.searchText.trim()) {
+      renderNotes = filterNotes(renderNotes, filters.searchText)
    }
 
    return (
       <section className="home">
          <div className="container">
             <Actions
-               sortBy={sortBy}
-               filterBy={filterBy}
-               handleAction={handleAction}
+               filters={filters}
+               handleFilters={handleFilters}
             />
             <NoteList
                renderNotes={renderNotes}
