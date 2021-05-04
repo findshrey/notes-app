@@ -5,11 +5,11 @@ const NotFound = ({ message }) => {
    const displayError = message ? message : '404 - Not Found !'
 
    return (
-      <div className="not-found">
+      <section className="not-found">
          <div className="container">
             {displayError} <Link to="/">Go Home</Link>
          </div>
-      </div>
+      </section>
    )
 }
 

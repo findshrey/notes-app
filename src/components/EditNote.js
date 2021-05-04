@@ -30,34 +30,36 @@ const EditNote = () => {
    }
 
    return (
-      <section className="edit-note">
+      <>
          {
             noteIndex !== -1 ? (
-               <div className="container">
-                  <input
-                     type="text"
-                     placeholder="Note Title"
-                     value={notes?.[noteIndex]?.title || ''}
-                     onChange={(e) => handleEditNote('title', e)}
-                  />
-                  <textarea
-                     placeholder="Enter note text"
-                     value={notes?.[noteIndex]?.body || ''}
-                     onChange={(e) => handleEditNote('body', e)}
-                     rows="10"
-                  />
-                  <div className="btn-wrapper">
-                     <button className="primary-btn" onClick={() => history.push('/')}>
-                        <span>Back</span>
-                        <IconBack />
-                     </button>
+               <section className="edit-note">
+                  <div className="container">
+                     <input
+                        type="text"
+                        placeholder="Note Title"
+                        value={notes?.[noteIndex]?.title || ''}
+                        onChange={(e) => handleEditNote('title', e)}
+                     />
+                     <textarea
+                        placeholder="Enter note text"
+                        value={notes?.[noteIndex]?.body || ''}
+                        onChange={(e) => handleEditNote('body', e)}
+                        rows="10"
+                     />
+                     <div className="btn-wrapper">
+                        <button className="primary-btn" onClick={() => history.push('/')}>
+                           <span>Back</span>
+                           <IconBack />
+                        </button>
+                     </div>
                   </div>
-               </div>
+               </section>
             ) : (
                <NotFound message={'Could not fetch the data for that note.'} />
             )
          }
-      </section>
+      </>
    )
 }
 
