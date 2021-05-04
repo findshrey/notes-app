@@ -4,6 +4,7 @@ import { nanoid } from 'nanoid'
 import { getTime } from 'date-fns'
 
 import useLocalStorage from './../hooks/useLocalStorage'
+import useDocumentTitle from './../hooks/useDocumentTitle'
 import Actions from './Actions'
 import NoteList from './NoteList'
 import IconPlus from './icons/IconPlus'
@@ -52,12 +53,9 @@ const Home = () => {
    const [notes, setNotes] = useLocalStorage('notes', [])
    const [filters, setFilters] = useState({ sortBy: 'title', searchText: '' })
    const [navigationId, setNavigationId] = useState('')
+   useDocumentTitle('Notes App | Home')
 
    let history = useHistory()
-
-   useEffect(() => {
-      document.title = 'Notes App | Home'
-   }, [])
 
    // Trigger navigation
    useEffect(() => {

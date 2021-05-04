@@ -3,6 +3,7 @@ import { useParams, useHistory } from 'react-router-dom'
 import { getTime } from 'date-fns'
 
 import useLocalStorage from './../hooks/useLocalStorage'
+import useDocumentTitle from './../hooks/useDocumentTitle'
 import IconBack from './icons/IconBack'
 import NotFound from './NotFound'
 
@@ -11,12 +12,12 @@ const EditNote = () => {
    const { id } = useParams()
    let history = useHistory()
 
-   useEffect(() => {
-      document.title = `Edit Note | ${notes[noteIndex]?.title ?? 'Unnamed Note'}`
-   }, [notes])
-
    // Get index of current note
    const noteIndex = notes.findIndex((note) => note.id === id)
+   // Get note title
+   const noteTitle = notes[noteIndex]?.title !== '' ? notes[noteIndex]?.title : 'Unnamed Note'
+
+   useDocumentTitle(`Notes App | Edit Note - ${noteTitle}`, notes)
 
    // Edit a note
    const handleEditNote = (type, e) => {
