@@ -68,8 +68,8 @@ const Home = () => {
    const handleAddNote = (id) => {
       const timestamp = getTime(new Date())
 
-      setNotes([
-         ...notes,
+      setNotes((prevNotes) => ([
+         ...prevNotes,
          {
             id: id,
             title: '',
@@ -77,7 +77,7 @@ const Home = () => {
             created: timestamp,
             edited: timestamp
          }
-      ])
+      ]))
 
       setNavigationId(id)
    }
