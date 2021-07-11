@@ -23,7 +23,7 @@ const App = () => {
                   <Route path="/edit/:id">
                      <EditNote />
                   </Route>
-                  <Route>
+                  <Route path="*">
                      <NotFound />
                   </Route>
                </Switch>
