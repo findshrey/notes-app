@@ -1,10 +1,10 @@
 import React from "react"
 import { BrowserRouter, Switch, Route } from "react-router-dom"
 
-import Home from "./Home"
+import EditNote from "./../pages/EditNote"
 import Header from "./Header"
-import EditNote from "./EditNote"
-import NotFound from "./NotFound"
+import Home from "./../pages/Home"
+import NotFound from "./../pages/NotFound"
 
 const App = () => {
    return (
