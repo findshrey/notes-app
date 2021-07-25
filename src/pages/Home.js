@@ -7,7 +7,7 @@ import useLocalStorage from "./../hooks/useLocalStorage"
 import useDocumentTitle from "./../hooks/useDocumentTitle"
 import Actions from "./../components/Actions"
 import NoteList from "./../components/NoteList"
-import IconPlus from "./../components/icons/IconPlus"
+import IconPlus from "../icons/IconPlus"
 
 // Sort notes by one of 3 selected categories
 const sortNotes = (notes, sortBy) => {

@@ -4,7 +4,7 @@ import { getTime } from "date-fns"
 
 import useLocalStorage from "../hooks/useLocalStorage"
 import useDocumentTitle from "../hooks/useDocumentTitle"
-import IconBack from "../components/icons/IconBack"
+import IconBack from "../icons/IconBack"
 import NotFound from "./NotFound"
 
 const EditNote = () => {
