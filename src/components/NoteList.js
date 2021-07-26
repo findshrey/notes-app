@@ -12,8 +12,9 @@ const NoteList = ({ renderNotes, handleNavigation, handleDeleteNote }) => {
                <div className="note-content">
                   <h3>{note.title ? note.title : "Unnamed Note"}</h3>
                   <p>
-                     Last Edited:{" "}
-                     {formatDistanceToNow(note.edited, { addSuffix: true })}
+                     {`Last Edited: ${formatDistanceToNow(note.edited, {
+                        addSuffix: true,
+                     })}`}
                   </p>
                </div>
                <div className="note-buttons">
