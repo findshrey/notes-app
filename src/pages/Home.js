@@ -3,11 +3,11 @@ import { useHistory } from "react-router-dom"
 import { nanoid } from "nanoid"
 import { getTime } from "date-fns"
 
-import useLocalStorage from "./../hooks/useLocalStorage"
-import useDocumentTitle from "./../hooks/useDocumentTitle"
-import Actions from "./../components/Actions"
-import NoteList from "./../components/NoteList"
+import useLocalStorage from "../hooks/useLocalStorage"
+import useDocumentTitle from "../hooks/useDocumentTitle"
+import Actions from "../components/Actions"
 import IconPlus from "../icons/IconPlus"
+import NoteList from "../components/NoteList"
 
 // Sort notes by one of 3 selected categories
 const sortNotes = (notes, sortBy) => {
@@ -54,17 +54,17 @@ const filterNotes = (notes, searchText) => {
 const Home = () => {
    const [notes, setNotes] = useLocalStorage("notes", [])
    const [filters, setFilters] = useState({ sortBy: "title", searchText: "" })
-   const [navigationId, setNavigationId] = useState("")
+   const [redirectID, setRedirectID] = useState("")
    useDocumentTitle("Notes App | Home")
 
    let history = useHistory()
 
    // Trigger navigation
    useEffect(() => {
-      if (navigationId) {
-         handleNavigation(navigationId)
+      if (redirectID) {
+         handleNavigation(redirectID)
       }
-   }, [navigationId])
+   }, [redirectID])
 
    // Add a new note
    const handleAddNote = (id) => {
@@ -81,14 +81,15 @@ const Home = () => {
          },
       ])
 
-      setNavigationId(id)
+      // Triggers redirection
+      setRedirectID(id)
    }
 
    // Delete a note
    const handleDeleteNote = (e, id) => {
       // Find note and add class
       const element = e.target
-      const note = element.closest("#js-note")
+      const note = element.closest("#js-note-animation")
       note.classList.add("fall")
 
       // Wait for transition to complete and delete note
@@ -116,7 +117,7 @@ const Home = () => {
    }
 
    return (
-      <section className="home">
+      <main className="home">
          <div className="container">
             <Actions filters={filters} handleFilters={handleFilters} />
             <NoteList
@@ -134,7 +135,7 @@ const Home = () => {
                </button>
             </div>
          </div>
-      </section>
+      </main>
    )
 }
 

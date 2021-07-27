@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react"
 
 const Actions = ({ filters, handleFilters }) => {
    const { sortBy, searchText } = filters
@@ -10,11 +10,14 @@ const Actions = ({ filters, handleFilters }) => {
                type="text"
                placeholder="Filter Notes"
                value={searchText}
-               onChange={(e) => handleFilters('searchText', e.target.value)}
+               onChange={(e) => handleFilters("searchText", e.target.value)}
             />
          </div>
          <div className="select-wrapper">
-            <select value={sortBy} onChange={(e) => handleFilters('sortBy', e.target.value)}>
+            <select
+               value={sortBy}
+               onChange={(e) => handleFilters("sortBy", e.target.value)}
+            >
                <option value="title">Sort by Title</option>
                <option value="created">Sort by recently Created</option>
                <option value="edited">Sort by last Edited</option>

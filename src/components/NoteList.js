@@ -8,7 +8,7 @@ const NoteList = ({ renderNotes, handleNavigation, handleDeleteNote }) => {
    return (
       <div className="note-list">
          {renderNotes.map((note) => (
-            <div key={note.id} id="js-note" className="note">
+            <div key={note.id} id="js-note-animation" className="note">
                <div className="note-content">
                   <h3>{note.title ? note.title : "Unnamed Note"}</h3>
                   <p>

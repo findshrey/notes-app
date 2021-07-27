@@ -40,7 +40,7 @@ const EditNote = () => {
    }
 
    return (
-      <section className="edit-note">
+      <main className="edit-note">
          <div className="container">
             <input
                type="text"
@@ -64,7 +64,7 @@ const EditNote = () => {
                </button>
             </div>
          </div>
-      </section>
+      </main>
    )
 }
 
