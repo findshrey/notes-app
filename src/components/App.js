@@ -8,24 +8,20 @@ import NotFound from "./../pages/NotFound"
 
 const App = () => {
    return (
-      <>
+      <BrowserRouter>
          <Header />
-         <main>
-            <BrowserRouter>
-               <Switch>
-                  <Route path="/" exact>
-                     <Home />
-                  </Route>
-                  <Route path="/edit/:id">
-                     <EditNote />
-                  </Route>
-                  <Route path="*">
-                     <NotFound />
-                  </Route>
-               </Switch>
-            </BrowserRouter>
-         </main>
-      </>
+         <Switch>
+            <Route path="/" exact>
+               <Home />
+            </Route>
+            <Route path="/edit/:id">
+               <EditNote />
+            </Route>
+            <Route path="*">
+               <NotFound />
+            </Route>
+         </Switch>
+      </BrowserRouter>
    )
 }
 
