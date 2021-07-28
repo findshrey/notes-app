@@ -2,6 +2,10 @@
    background: $c-green-dark;
    padding: 2rem 0;
 
+   .container a {
+      display: inline-block;
+   }
+
    h1 {
       line-height: 1;
       margin-bottom: 1rem;
