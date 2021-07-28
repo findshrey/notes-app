@@ -15,8 +15,9 @@ const EditNote = () => {
    // Get index of current note
    const noteIndex = notes.findIndex((note) => note.id === id)
    // Get note title
-   const noteTitle =
-      notes[noteIndex]?.title !== "" ? notes[noteIndex]?.title : "Unnamed Note"
+   const noteTitle = notes[noteIndex]?.title
+      ? notes[noteIndex].title
+      : "Unnamed Note"
 
    useDocumentTitle(`Notes App | Edit Note - ${noteTitle}`, notes)
 
