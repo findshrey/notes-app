@@ -21,7 +21,7 @@
    border-radius: 2px;
    position: relative;
    overflow: hidden;
-   
+
    select {
       -webkit-appearance: none;
       -moz-appearance: none;
@@ -37,7 +37,7 @@
    }
 
    &::after {
-      content: '\25BC';
+      content: "\25BC";
       background-color: $c-green-dark;
       cursor: pointer;
       position: absolute;

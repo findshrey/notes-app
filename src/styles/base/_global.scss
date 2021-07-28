@@ -1,5 +1,7 @@
 // Global Styles
-*, *::before, *::after {
+*,
+*::before,
+*::after {
    margin: 0;
    padding: 0;
    box-sizing: border-box;
@@ -31,7 +33,15 @@ h3 {
    font-size: clamp(1.6rem, calc(1.2rem + 1vw), 2rem);
 }
 
-div, span, h4, p, a, li, button, label, input {
+div,
+span,
+h4,
+p,
+a,
+li,
+button,
+label,
+input {
    font-size: $font-m;
 }
 
@@ -48,7 +58,7 @@ button {
    cursor: pointer;
    color: inherit;
    font-family: inherit;
-   
+
    &:focus {
       outline: none;
    }
