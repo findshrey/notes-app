@@ -4,8 +4,9 @@
 @import "./base/global";
 
 // Components
-@import "./components/header";
 @import "./components/actions";
-@import "./components/note-list";
 @import "./components/edit-note";
+@import "./components/header";
+@import "./components/layout";
 @import "./components/not-found";
+@import "./components/note-list";

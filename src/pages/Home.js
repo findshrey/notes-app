@@ -117,25 +117,23 @@ const Home = () => {
    }
 
    return (
-      <main className="home">
-         <div className="container">
-            <Actions filters={filters} handleFilters={handleFilters} />
-            <NoteList
-               renderNotes={renderNotes}
-               handleNavigation={handleNavigation}
-               handleDeleteNote={handleDeleteNote}
-            />
-            <div className="btn-wrapper">
-               <button
-                  className="primary-btn"
-                  onClick={() => handleAddNote(nanoid(10))}
-               >
-                  <span>Create Note</span>
-                  <IconPlus />
-               </button>
-            </div>
+      <div className="container">
+         <Actions filters={filters} handleFilters={handleFilters} />
+         <NoteList
+            renderNotes={renderNotes}
+            handleNavigation={handleNavigation}
+            handleDeleteNote={handleDeleteNote}
+         />
+         <div className="btn-wrapper">
+            <button
+               className="primary-btn"
+               onClick={() => handleAddNote(nanoid(10))}
+            >
+               <span>Create Note</span>
+               <IconPlus />
+            </button>
          </div>
-      </main>
+      </div>
    )
 }
 

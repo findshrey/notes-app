@@ -9,11 +9,9 @@ const NotFound = ({ message }) => {
    const displayError = message ? message : "404 - Not Found !"
 
    return (
-      <main className="not-found">
-         <div className="container">
-            {displayError} <Link to="/">Go Home</Link>
-         </div>
-      </main>
+      <div className="container not-found">
+         {displayError} <Link to="/">Go Home</Link>
+      </div>
    )
 }
 
